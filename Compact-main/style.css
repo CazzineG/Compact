@@ -1,0 +1,301 @@
+/* Variaveis */
+:root {
+    /* Cor */
+    --cor01: #fffffb;
+    --cor01hover: #fffffbb9;
+    --cor01hover01: #fffffb;
+    --cor02: black;
+    --cor02hover: rgba(0, 0, 0, 0.76);
+    --cor02hover02: black;
+    --cor03: #5b5f97;
+    --cor04: #ff6b6c;
+    --cor05: #ffc145;
+
+    /* Fontes */
+    --fonte01: "Poppins";
+    --fonte02: "bartkey";
+    --fonte03: sans-serif;
+}
+
+/* Fonte pasta */
+@font-face{
+    font-family: bartkey;
+
+    src: url("font/bartkey-font/bartkey-8m0ya.otf");
+}
+
+
+/* Geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: min(100%-15px, 840px);
+    font-family: var(--fonte01);
+}
+
+html {
+    height: 100vh;
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1280px;
+    margin: auto;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header {
+    width: 100%;
+    padding: 20px 4%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: .5s;
+    z-index: 1;
+}
+
+/* Efeito navegação */
+header.rolagem {
+    background-color: var(--cor01);
+    padding: 5px 4%;
+}
+
+header.rolagem a {
+    color: var(--cor02hover);
+}
+
+header.rolagem a:hover {
+    color: var(--cor02hover02);
+    transition: .5s; 
+}
+
+header.rolagem img {
+    width: 150px;
+}
+
+/* Links */
+header ul {
+    list-style-type: none;
+}
+
+header ul li {
+    display: inline-block;
+    margin: 0 40px;
+}
+
+header ul li a {
+    color: var(--cor01);
+    text-decoration: none;
+    transition: 0.5s;
+    display: block;
+    position: relative;
+    padding: 0;   
+}
+
+/* Efeito Hover Links */
+header ul:hover li a {
+    opacity: .3;
+}
+
+header ul li a:hover {
+    transition: 0.5s;
+    opacity: 1;
+    transform: scale(1.2);
+    color: var(--cor01hover01);
+}
+
+header ul li a:active {
+    transition: 0.1s;
+    opacity: .5;
+    transform: scale(1.1);
+    color: var(--cor01hover);
+}
+
+header ul li a::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 1%;
+    background-color: var(--cor05);
+    z-index: -1;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .3s;
+    border-radius: 20px;
+}
+
+header ul li a:hover::before{
+    transform-origin: left;
+    transform: scaleX(1);
+    transition: transform .3s;
+}
+
+/* Botão */
+.btn-contato button {
+    width: 200px;
+    height: 50px;
+    border: 0;
+    border-radius: 20px;
+    background-color: var(--cor04);
+    color: var(--cor01);
+    cursor: pointer;
+    transition: .2s;
+    font-size: 140%;
+}
+
+/* Botão "contato" navegação */
+.btn-contato button:hover {
+    transform: scale(1.1);
+    transition: .2s;
+    background-color: var(--cor04);
+}
+
+#btn-nav{
+    width: 120px;
+    height: 40px; 
+    font-size: 100%;
+}
+
+section .botoes {
+    display: flex;
+    gap: 20px;
+}
+
+button#btn-explorar {
+    background-color: var(--cor03);
+    border: 1px solid var(--cor04);
+}
+
+.btn-contato button:active {
+    transform: scale(1);
+}
+
+/* Capa Inicial */
+section.topo-do-site {
+    padding: 40px 4%;
+    background-color: var(--cor03);
+    height: 100vh;
+}
+
+section.topo-do-site .flex {
+    padding: 0px 5%;
+    padding-top: 150px;
+    align-items: center;
+    justify-content: center;
+    gap: 300px;
+}
+
+/* Texto h1 */
+.topo-do-site h1 {
+    color: var(--cor05);
+    font-size: 85px;
+}
+
+/* Imagem capa */
+
+.img-topo-site img{
+
+}
+
+/* Efeito digitando */
+.txt-animado {
+    font-size: 45px;
+    font-weight: 300;
+    margin: 30px 0;
+    color: var(--cor04);
+}
+
+.txt-animado span {
+    position: relative;
+}
+
+/* Animação */
+.txt-animado span::before {
+    content: " ";
+    color: var(--cor02);
+    animation: palavras 20s infinite;
+}
+
+.txt-animado span::after {
+    content: " ";
+    position: absolute;
+    height: 100%;
+    border-left: 1px solid var(--cor02);
+    right: -10px;
+    animation: cursor .8s infinite, digita 20s steps(15) infinite;
+    width: calc(100% + 15px);
+    background-color: var(--cor03);
+}
+
+/* Efeito digitando */
+@keyframes digita {
+
+    10%,
+    15%,
+    30%,
+    35%,
+    50%,
+    55%,
+    70%,
+    75%,
+    90%,
+    95% {
+        width: 0;
+    }
+
+    5%,
+    20%,
+    25%,
+    40%,
+    45%,
+    60%,
+    65%,
+    80%,
+    85% {
+        width: calc(100% + 15px);
+    }
+}
+
+/* Efeito cursor piscando */
+@keyframes cursor {
+    0% {
+        border-left: 1px solid var(--cor03);
+    }
+}
+
+/* Efeito troca de palavras */
+@keyframes palavras {
+
+    0%,
+    20% {
+        content: "seu espaço.";
+    }
+
+    21%,
+    40% {
+        content: "seu estilo.";
+    }
+
+    41%,
+    60% {
+        content: "sua vida."
+    }
+
+    61%,
+    80% {
+        content: "sua rotina.";
+    }
+
+    81%,
+    100% {
+        content: "seu ambiente.";
+    }
+}
